@@ -1,57 +1,40 @@
 # Rich Text Web Application
-Original [README by Sundeep (sanpops)](https://github.com/sanpops/custom-rich-text-editor)
 
-```
-# Custom Rich Text Editor
-This project is a lightweight and customizable rich text editor built using **HTML**, **CSS**, and **JavaScript**. It demonstrates how to create an editor from scratch with commonly used features like:
+Despite the first impression that can be incurred from the caption, this repository is about the path leading to 
+a successful solution of the underlying task which the application is supposed to serve. The journey starts from 
+questioning whether you really need a full-fledged tool for fancy formatting and text decoration. It may happen 
+that the decision is outside your control, and the following story is about how code development challenges can 
+direct you to better understanding of project requirements.
 
-- Bold, Italic, Underline, and Strikethrough text formatting.
-- Font family and color selection.
-- Text alignment options (left, center, right, justify).
-- Insert links and images.
-- **Code View**: Edit the raw HTML content.
-- **Live Preview**: Render the content dynamically.
+Embarking on development of a WYSIWYG tool (tools) for on-screen text generation, why not to attempt re-use of 
+html5 rich text editor based on the textarea control? A beautifully authored 
+['custom rich text editor'](https://github.com/sanpops/custom-rich-text-editor) by Sundeep (sanpops) is a pure 
+html5 implementation of rich text editor with a toolbar and without dependenices on external libraries or 
+frameworks.
 
-## Features
-- Full customization of design and features.
-- Works across modern browsers.
-- Simple and clean code for easy integration into your projects.
+Sundeep's editor toolbar has a typical set of richtext editor controls with a noticeable omission of those that 
+set a font size. I added a font size control as per the SO post 
+[Document execCommand fontSize in pixels](https://stackoverflow.com/questions/5868295#56103356).
+In testing this feature, I learnt that execCommand is scheduled for deprecation and what it means, see 
+[What's the alternative](https://stackoverflow.com/questions/60581285),
+esp. answers [Year 2022-2015 answer](https://stackoverflow.com/questions/60581285#70831583) and 
+[2024 answer](https://stackoverflow.com/questions/60581285#78427138).
 
-## Folder Structure
-/project-folder
+Rather then dismiss the web application approach (or at least the use of 'deprecated' execCommand) straightaway, 
+I examined what execCommand with a 'fontSize' parameter does; this and similar exercises convinced me that 
+the 'correct' approach to rich text formatting required the use of styles. The decision of a creative typesetter 
+user to apply the font size to a word, a text run, a paragraph is regular and systematic; haphazard font size 
+changes produce sloppy visuals.
 
-├── index.html
+What the user might need is a WYSIWYG **CSS** editor. You need not use this tool as often as you use the rich 
+text editor tool, but it is the right tool to enable the designer to use the font size suitable for various 
+occasions. Finally, the font and layout controls will be replaced to the WYSIWYG **CSS** editor
+page; the rich text editor page will retain only the style selection control.
 
-├── editor.css
+WYSIWYG **CSS** editor for this project is work-in-progress. There are few WYSIWYG CSS editor on github, 
+but this project approach is to implement features without dependenices on external libraries or frameworks.
 
-└── editor.js
+## Other features
 
-## Usage
-1. Clone this repository:
-
-   git clone https://github.com/sanpops/custom-rich-text-editor
-
-2. Open `index.html` in your browser.
-3. Use the editor toolbar to format text, edit raw HTML, or preview the content.
-
-## Future Enhancements
-- Add undo/redo functionality.
-- Implement keyboard shortcuts (e.g., `Ctrl+B` for bold).
-- Sanitize user input with libraries like [DOMPurify](https://github.com/cure53/DOMPurify).
-- Make it responsive for mobile devices.
-- Add custom plugins for inserting tables, emojis, and charts.
-
-## Contribution
-Feel free to fork, explore, and contribute to the project. Suggestions and pull requests are welcome!
-
-## Demo
-![image](https://github.com/user-attachments/assets/b7d73510-33fb-4668-a952-7ffbfca0f56d)
-```
-# This repo's enhancements to the original Custom Rich Text Editor
-To the original code, I added a font size control inspired by the SO post 
-[Document edecCommand fontSize in pixels](https://stackoverflow.com/questions/5868295/document-execcommand-fontsize-in-pixels#56103356)
-
-and 
-
-the ability to save the rich text to a text file using the File System API. The code is borrowed from
+To save the rich text to a text file using the File System API implemented with the code borrowed from
 [File System API demo by Mehmet Burak Erman](https://github.com/mburakerman/file-system-access-api-demo).
