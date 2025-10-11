@@ -1,1 +1,1 @@
-Try this HTML rich text editor
+Try this <font color="#f20202">HTML&nbsp;</font><font face="Georgia"><span style="font-size: 28px;">rich</span>&nbsp;</font>text editor<br>

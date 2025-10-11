@@ -1,6 +1,21 @@
 // the code for function fontSize(size) is borrowed from
 // https://stackoverflow.com/questions/5868295/document-execcommand-fontsize-in-pixels#56103356
 
+let textareaStyle;
+
+window.addEventListener("load", (event) => {
+    textareaStyle = document.defaultView.getComputedStyle(document.querySelector("#editor"));
+    fontSizeSelector.value = parseFloat(textareaStyle.fontSize);
+});
+
+editor.addEventListener("click", (event) => {
+    var sel = document.getSelection();
+    var selFocusNode = sel.focusNode;
+    var parentElem = selFocusNode.parentElement;
+    if (parentElem.attributes)
+        alert(parentElem.attributes[0].nodeName + "=\"" + parentElem.attributes[0].nodeValue + "\"");
+});
+
 function execCmd(command, value = null) {
     document.execCommand(command, false, value);
 }
