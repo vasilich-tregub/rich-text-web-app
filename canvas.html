@@ -7,20 +7,62 @@
 </head>
 <body>
     <div class="toolbar">
-        <button title="Draw Text" onclick="drawText()"><i class="fas fa-font"></i></button>
+        <button title="Draw Text, English" onclick="drawTextEn()">English</button>
+        <button title="Draw Text, Arabic" onclick="drawTextAr()">Arabic</button>
+        <input type="number" step="0.1" min=0 max=1 value="0.667" id="gAlpha" />
+        <button onclick="setBackground()">Set Background</button>
+        <button onclick="clearBackground()">Clear Background</button>
+        <span style="color: gray">/*To see the effect of lower alpha, set/clear background to erase the content*/</span>
     </div>
-    <canvas id="canvas" width="1280" style="outline: thin solid blue; background: url('./image.jpg');"></canvas>
+    <canvas id="canvas" width="1280" height="560" style="outline: thin solid blue;"></canvas>
     <script>
-        function drawText() {
-            const textToDraw  = "Glyphs filled and stroked with transparency"
+        function drawTextEn() {
+            const text  = "Glyphs(), filled and stroked "
+            const textCont = "with transparency"
             const ctx = document.getElementById("canvas").getContext("2d");
-            ctx.strokeStyle = "cyan";
-            ctx.lineWidth = 5;
-            ctx.fillStyle = "magenta";
-            ctx.globalAlpha = 0.5;
-            ctx.font = "72px serif";
-            ctx.strokeText(textToDraw, 10, 100);
-            ctx.fillText(textToDraw, 10, 100);
+            ctx.strokeStyle = "lime";
+            ctx.lineWidth = 7;
+            ctx.fillStyle = "fuchsia";
+            ctx.globalAlpha = gAlpha.value;
+            ctx.font = "112px serif";
+            ctx.strokeText(text, 5, 100);
+            ctx.fillText(text, 5, 100);
+            ctx.strokeText(textCont, 5, 200);
+            ctx.fillText(textCont, 5, 200);
+        }
+        function drawTextAr() {
+            const text = "الرموزالرموز()، ممتلئة ومحددة"
+            const textCont = "بشفافية"
+            const ctx = document.getElementById("canvas").getContext("2d");
+            ctx.strokeStyle = "lime";
+            ctx.lineWidth = 7;
+            ctx.fillStyle = "fuchsia";
+            ctx.globalAlpha = gAlpha.value;
+            ctx.font = "112px serif";
+            ctx.strokeText(text, 116, 400);
+            ctx.fillText(text, 116, 400);
+            ctx.strokeText(textCont, 1000, 500);
+            ctx.fillText(textCont, 1000, 500);
+        }
+        function setBackground() {
+            var img = new Image();
+            const ctx = document.getElementById("canvas").getContext("2d");
+            img.onload = function () {
+                ctx.save();
+                const pattern = ctx.createPattern(img, "repeat");
+                ctx.globalAlpha = 1;
+                ctx.fillStyle = pattern;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.restore();
+            };
+            img.src = './image.jpg';
+        }
+        function clearBackground() {
+            const ctx = document.getElementById("canvas").getContext("2d");
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = "slateblue";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.restore();
         }
     </script>
 </body>

@@ -38,3 +38,6 @@ but this project approach is to implement features without dependenices on exter
 
 To save the rich text to a text file using the File System API implemented with the code borrowed from
 [File System API demo by Mehmet Burak Erman](https://github.com/mburakerman/file-system-access-api-demo).
+
+
+'canvas.html' demonstrates how you can draw glyph outlines and control the opacity
