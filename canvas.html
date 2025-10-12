@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Drawing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="toolbar">
+        <button title="Draw Text" onclick="drawText()"><i class="fas fa-font"></i></button>
+    </div>
+    <canvas id="canvas" width="1280" style="outline: thin solid blue; background: url('./image.jpg');"></canvas>
+    <script>
+        function drawText() {
+            const textToDraw  = "Glyphs filled and stroked with transparency"
+            const ctx = document.getElementById("canvas").getContext("2d");
+            ctx.strokeStyle = "cyan";
+            ctx.lineWidth = 5;
+            ctx.fillStyle = "magenta";
+            ctx.globalAlpha = 0.5;
+            ctx.font = "72px serif";
+            ctx.strokeText(textToDraw, 10, 100);
+            ctx.fillText(textToDraw, 10, 100);
+        }
+    </script>
+</body>
+</html>
