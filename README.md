@@ -3,7 +3,7 @@
 Despite the first impression that can be incurred from the caption, this repository is about the path leading to 
 a successful solution of the underlying task which the application is supposed to serve. The journey starts from 
 questioning whether you really need a full-fledged tool for fancy formatting and text decoration. It may happen 
-that the decision is outside your control, and the following story is about how code development challenges can 
+that the decision is outside your control. The following story is about how code development challenges can 
 direct you to better understanding of project requirements.
 
 Embarking on development of a WYSIWYG tool (tools) for on-screen text generation, why not to attempt re-use of 
@@ -40,4 +40,4 @@ To save the rich text to a text file using the File System API implemented with 
 [File System API demo by Mehmet Burak Erman](https://github.com/mburakerman/file-system-access-api-demo).
 
 
-'canvas.html' demonstrates how you can draw glyph outlines and control the opacity
+The webpage 'canvas.html' demonstrates how to draw glyph outlines with stroke width and opacity set in UI
