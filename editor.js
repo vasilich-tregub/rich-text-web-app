@@ -13,7 +13,7 @@ editor.addEventListener("click", (event) => {
     var selFocusNode = sel.focusNode;
     var parentElem = selFocusNode.parentElement;
     if (parentElem.attributes)
-        alert(parentElem.attributes[0].nodeName + "=\"" + parentElem.attributes[0].nodeValue + "\"");
+       idMessageFromPage.value = parentElem.attributes[0].nodeName + "=\"" + parentElem.attributes[0].nodeValue + "\"";
 });
 
 function execCmd(command, value = null) {
