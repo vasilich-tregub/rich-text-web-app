@@ -19,7 +19,11 @@
         function drawTextEn() {
             const text  = "Glyphs(), filled and stroked "
             const textCont = "with transparency"
-            const ctx = document.getElementById("canvas").getContext("2d");
+            const ctx = document.getElementById("canvas").getContext("2d", {
+                willReadFrequently: true, // will force the use of a software (instead of hardware accelerated) 2D canvas
+                                        // and can save memory when calling getImageData() frequently
+                desynchronyzed: true, // reduces the latency by desynchronizing the canvas paint cycle from the event loop
+            });
             ctx.strokeStyle = "lime";
             ctx.lineWidth = strokeLineWidth.value;
             ctx.fillStyle = "fuchsia";
@@ -33,7 +37,11 @@
         function drawTextAr() {
             const text = "الرموز()، ممتلئة ومحددة"
             const textCont = "بشفافية"
-            const ctx = document.getElementById("canvas").getContext("2d");
+            const ctx = document.getElementById("canvas").getContext("2d", {
+                willReadFrequently: true, // will force the use of a software (instead of hardware accelerated) 2D canvas
+                                        // and can save memory when calling getImageData() frequently
+                desynchronyzed: true, // reduces the latency by desynchronizing the canvas paint cycle from the event loop
+            });
             ctx.strokeStyle = "lime";
             ctx.lineWidth = strokeLineWidth.value;
             ctx.fillStyle = "fuchsia";
