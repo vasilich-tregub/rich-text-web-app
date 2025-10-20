@@ -30,9 +30,9 @@
                   identical.
               </li>
               <li>You can trace the code execution in browser's developer tool (Edge: F12, Chrome DevTools, Firefox DevTools, Safari's
-              Develop menu) stopping at the breakpoints and pressing F10 (Edge) to step over lines of code. You can even step into the 
+              Web Inspector) stopping at the breakpoints and pressing F10 (Edge) to step over lines of code. You can even step into the 
               WASM code with F11 pressed on the line 47 (<strong>console.log('memory.size=' + obj.instance.exports.size());</strong>),
-              line 53 or line 59.
+              line 54 or line 60.
               </li>
           </ul>
       </div>
@@ -48,15 +48,16 @@
         wasmobj = obj;
       });
       if(window.location.href.substr(0,8) == "file:///") idWarning.style.display = "inherit";
-      function writeToWASM(){
+      function writeToWASM() {
+          wasmobj.instance.exports.stringsizeput(idSend.value.length);
           for (let i = 0; i < idSend.value.length; ++i)
-              wasmobj.instance.exports.store(0x1000 + i, idSend.value.charCodeAt(i));
-          alert(idSend.value.length.toString() + " bytes written to WASM memory");
+              wasmobj.instance.exports.stringput(i, idSend.value.charCodeAt(i));
+          alert(wasmobj.instance.exports.stringsizeget().toString() + " bytes written to WASM memory");
       }
       function readFromWASM(){
           idReceive.value = "";
-          for (let i = 0; i < idSend.value.length; ++i)
-              idReceive.value += String.fromCharCode(wasmobj.instance.exports.load(0x1000 + i));
+          for (let i = 0; i < wasmobj.instance.exports.stringsizeget(); ++i)
+              idReceive.value += String.fromCharCode(wasmobj.instance.exports.stringget(i));
       }
       </script>
   </body>
