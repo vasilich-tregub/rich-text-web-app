@@ -41,10 +41,3 @@ To save the rich text to a text file using the File System API implemented with 
 
 
 The webpage 'canvas.html' demonstrates how to draw glyph outlines with stroke width and opacity set in UI
-
-The folder 'WASM-memory' is a demo of how a javascript can access a memory allocated in the WASM module. 
-This demo (unlike the File Access demos) should be run in the http server. Python's http.server is good 
-for testing purposes and can be run with a command
-          <pre>py -m http.server -b 127.0.0.1</pre>      
-that you launch, for example, from this folder for a convenient access from your browser 
-(http://127.0.0.1:8000/index.html).
