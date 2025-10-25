@@ -9,7 +9,7 @@ function drawTextEn() {
         let metrics = ctx.measureText(words[ix] + " ");
         if (xpos + metrics.width > 1275) {
             xpos = 5;
-            ypos += 120;
+            ypos += metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
         }
         drawTextRun(words[ix], xpos, ypos);
         xpos += metrics.width;
