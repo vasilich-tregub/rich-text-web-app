@@ -1,6 +1,12 @@
+window.onload = () => { colorBackground("#6a5acd"); };
+function clearCanvas() {
+    const ctx = document.getElementById("canvas").getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 function drawTextEn() {
     const ctx = document.getElementById("canvas").getContext("2d");
-    ctx.font = "112px serif";
+    let fontsz = document.getElementById("fontsize").value;
+    ctx.font = fontsz.toString() + "px serif";
     const text = "Glyphs(), filled and stroked with transparency";
     const words = text.split(" ");
     let xpos = 5;
@@ -21,11 +27,12 @@ function drawTextRun(textRun, xpos, ypos) {
     ctx.lineWidth = strokeLineWidth.value;
     ctx.fillStyle = "fuchsia";
     ctx.globalAlpha = gAlpha.value;
-    ctx.font = "112px serif";
+    let fontsz = document.getElementById("fontsize").value;
+    ctx.font = fontsz.toString() + "px serif";
     ctx.strokeText(textRun, xpos, ypos);
     ctx.fillText(textRun, xpos, ypos);
     //ctx.strokeText(textCont, 5, 200);
-    //ctx.fillText(textCont, 5, 200);
+    //ctx.fillText(textCont, 5, 200);
 }
 function drawTextAr() {
     const text = "الرموز()، ممتلئة ومحددة"
@@ -39,29 +46,30 @@ function drawTextAr() {
     ctx.lineWidth = strokeLineWidth.value;
     ctx.fillStyle = "fuchsia";
     ctx.globalAlpha = gAlpha.value;
-    ctx.font = "112px serif";
+    let fontsz = document.getElementById("fontsize").value;
+    ctx.font = fontsz.toString() + "px serif";
     ctx.strokeText(text, 368, 400);
     ctx.fillText(text, 368, 400);
     ctx.strokeText(textCont, 1000, 500);
     ctx.fillText(textCont, 1000, 500);
 }
 function imageBackground() {
-    var img = new Image();
-    const ctx = document.getElementById("canvas").getContext("2d");
-    img.onload = function () {
-        ctx.save();
-        const pattern = ctx.createPattern(img, "repeat");
-        ctx.globalAlpha = 1;
-        ctx.fillStyle = pattern;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.restore();
-    };
-    img.src = './image.jpg';
+    document.getElementById("canvasbackground").style.backgroundImage = "url('image.jpg')";
+    document.getElementById("canvasbackground").style.backgroundRepeat = "repeat";
 }
-function colorBackground() {
-    const ctx = document.getElementById("canvas").getContext("2d");
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = "slateblue";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.restore();
+function colorBackground(color) {
+    document.getElementById("canvasbackground").style.backgroundImage = "none";
+    document.getElementById("canvasbackground").style.backgroundColor = color;
+}
+function downloadCanvasContent() {
+    var link = document.createElement("a");
+    link.download = "canvas-image.png";
+
+    canvas.toBlob((blob) => {
+        link.href = URL.createObjectURL(blob);
+        console.log(blob);
+        console.log(link.href);
+        link.click(); // saves image.png to downloads
+    }, "image/png");
+
 }

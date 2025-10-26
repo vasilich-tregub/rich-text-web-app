@@ -40,4 +40,6 @@ To save the rich text to a text file using the File System API implemented with 
 [File System API demo by Mehmet Burak Erman](https://github.com/mburakerman/file-system-access-api-demo).
 
 
-The webpage 'canvas.html' demonstrates how to draw glyph outlines with stroke width and opacity set in UI
+The webpage 'canvas.html' demonstrates how to draw glyph outlines with stroke width and opacity set in UI. 
+The canvas content, transformed to image (canvas.toBlob()), can be downloaded to a local filesystem.
+
