@@ -13,12 +13,12 @@
         <label for="gAlpha">General alpha:</label><input type="number" step="0.1" min=0 max=1 value="0.667" id="gAlpha" />
         <label for="strokeLineWidth">Stroke Width:</label><input type="number" step="0.5" min=0 max=12 value="7" id="strokeLineWidth" />
         <button onclick="imageBackground()">Image Bkg</button>
-        <label for="<input type="canvasbkgColor">Canvas Bkg Color:</label>
+        <label for="canvasbkgColor">Canvas Bkg Color:</label>
         <input type="color" id="canvasbkgColor" value=#6a5acd onchange="colorBackground(this.value)">
         <button onclick="downloadCanvasContent()">Download Canvas Content</button>
     </div>
     <div id="canvasbackground" style="width: 1280px; height: 560px; outline: thin solid blue;">
-        <canvas id="canvas" width="1280px" height="560px" style="outline: thin solid blue;"></canvas>
+        <canvas id="canvas" width="1280" height="560" style="outline: thin solid blue;"></canvas>
     </div>
     <script src="canvas.js">
     </script>
